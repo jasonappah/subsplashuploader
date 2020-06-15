@@ -10,3 +10,20 @@
     # 8) wait until the div inside div id ember709 has style="width:100%" (this means the video has been fully uploaded)
     # 9) i forgot to get the id for the publish button, but y'know, click that
 
+from datetime import datetime
+
+def getTime():
+    return (datetime.now().strftime("%m/%d/%Y, %H:%M:%S") + ": ")
+
+def log(msg):
+    print(f"{getTime()}{msg}")
+
+class Church:
+    def __init__(self, name="Generic Church", series={}, user="", passwd=""):
+        self.name = name
+        self.series = series
+        self.user = user
+        self.passwd = passwd
+
+    def addSeries(self, month, year, name):
+        self.series[f"{month} {year}"] = name
