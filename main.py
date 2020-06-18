@@ -127,7 +127,7 @@ class Church:
             browser.quit()
             return False
         
-        # Selecting the sermon series
+        # Selecting the series
         try:
             if videomonthyear in self.series.keys():
                 series = self.series[videomonthyear]
@@ -141,7 +141,7 @@ class Church:
             if series == "":
                 log("Couldn't get a series from the video provided. Maybe the timestamp on the video is wrong.")
         except Exception as e:
-            log("Something went wrong! Unable to select a sermon series or skip the selection of a series.")
+            log("Something went wrong! Unable to select a media series or skip the selection of a series.")
             log(e)
             browser.quit()
             return False
@@ -226,4 +226,5 @@ class Church:
         browser.quit()
         return True
         
-        
+if __name__ == "__main__":
+    print("Hi! This file only contains function definitions and doesn't do anything. Use church.example.py to get started!")
