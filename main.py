@@ -1,15 +1,3 @@
-# The plan:
-    # 0) have a dictionary where keys are Month + Year and the value is the Sermon series (you could use S1 to manage this! or we could try goJSON) --DONE
-    # 1) post to dashboard.thechurchapp.org w/ email + password to login - done
-    # 2) get https://dashboard.thechurchapp.org/18953/#/library/media - done 
-    # 3) click on the button element with id ember398 (this is the create media item button) - done
-    # 4) enter today's date into the input with id ember405 (this is the title) - done
-    # 5) click on the option inside the select element inside div id ember301 that matches the sermon series that the video was made in (using dictionary from 0) - done
-    # 6) click on button id ember412 to create item - done
-    # 7) on the page that loads, upload the video to the input with id="ember677_fileUploader" - done
-    # 8) wait until the div inside div id ember709 has style="width:100%" (this means the video has been fully uploaded) - DONE
-    # 9) i forgot to get the id for the publish button, but y'know, click that - done!!!
-
 import time, os
 from datetime import datetime
 from selenium.webdriver import Chrome
