@@ -13,13 +13,13 @@ def getTime():
 def log(msg):
     print(f"{getTime()}{msg}")
 
-class Church:
-    def __init__(self, name="Generic Church", user="", passwd="", series={}):
+class Org:
+    def __init__(self, name="Generic Org", user="", passwd="", series={}):
         self.name = name
         self.series = series
         self.user = user
         self.passwd = passwd
-        log(f"Created a new church: {name}")
+        log(f"Created a new organization: {name}")
 
     def addSeries(self, month, year, name):
         self.series[f"{month} {year}"] = name
@@ -234,4 +234,4 @@ class Church:
             self.upload(folderpath+"/"+i)
         
 if __name__ == "__main__":
-    print("Hi! This file only contains function definitions and doesn't do anything. Use church.example.py to get started!")
+    print("Hi! This file only contains function definitions and doesn't do anything. Use org.example.py to get started!")

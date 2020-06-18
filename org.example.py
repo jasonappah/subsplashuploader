@@ -1,4 +1,4 @@
-churchname = "My Church"
+orgname = "My Org"
 user = "yoursubsplashusername"
 passwd = "yoursubsplashpw"
 
@@ -6,14 +6,14 @@ passwd = "yoursubsplashpw"
 # Make sure this is taken care of prior to running this script, otherwise
 # the series will be left as blank during the upload process.
 series = {
-    "June 2020": "The Physics of Faith", 
-    "May 2020": "Enjoying Good Health",
+    "June 2020": "Series", 
+    "May 2020": "Another Series",
     "July 2020": "Example Series"
     }
 
-from main import Church
+from main import Org
 
-c = Church(name=churchname, user=user, passwd=passwd, series=series)
+c = Org(name=orgname, user=user, passwd=passwd, series=series)
 
 # Example of uploading a singular video
 filepath = "path/to/your/video.mp4"
