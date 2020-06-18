@@ -225,6 +225,13 @@ class Church:
 
         browser.quit()
         return True
+
+    def bulkUpload(self, folderpath):
+        files = [f for f in os.listdir(folderpath) if os.path.isfile(os.path.join(folderpath, f))]
+        print(files)
+        for i in files:
+            print(i)
+            self.upload(folderpath+"/"+i)
         
 if __name__ == "__main__":
     print("Hi! This file only contains function definitions and doesn't do anything. Use church.example.py to get started!")
