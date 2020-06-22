@@ -1,4 +1,3 @@
-import time, os
 from datetime import datetime
 from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.options import Options
@@ -27,13 +26,17 @@ class Org:
     
     def validateVideo(self, video):
         log(f"Validating video {video}")
-        video = os.path.abspath(video)
-        tmp = video.split(".")
-        if tmp[-1] in ALLOWED_EXT:
-            log("This is a valid video.")
-            return video
+        if pathlib.Path(video).exists():
+            video = os.path.abspath(video)
+            tmp = video.split(".")
+            if tmp[-1] in ALLOWED_EXT:
+                log("This is a valid video.")
+                return video     
+            else:
+                log("This is not a valid video.")
+                return False
         else:
-            log("This is not a valid video.")
+            log(f"This file {video} does not exist.")
             return False
 
     def upload(self, video="", name=""):
@@ -42,9 +45,10 @@ class Org:
             log("Can't upload an invalid video. Stopping this upload...")
             return False
         log(f"Beginning to upload video to Subsplash: {video}")
-
+        vpath = pathlib.Path(video)
         try:
-            videocreationdate = datetime.fromtimestamp(int(os.path.getmtime(video)))
+            #videocreationdate = datetime.fromtimestamp(int(os.path.getmtime(video)))
+            videocreationdate = datetime.datetime.fromtimestamp(vpath.stat().st_ctime)
             if name == "":
                 name = videocreationdate.strftime("%B %d, %Y")
         except Exception as e:
@@ -206,9 +210,8 @@ class Org:
         try:
             browser.find_element_by_xpath("//div/span/button").click()
         except Exception as e:
-            log("Something went wrong! Unable to press the publish button.")
+            log("Something went wrong! Unable to press the publish button. Not quitting!")
             log(e)
-            browser.quit()
             return False
 
         # Verify the video has been published
@@ -218,9 +221,8 @@ class Org:
             publishdate = browser.find_element_by_class_name("d-media-publish-manager__date").text.strip()
             log(f"The video has been {state} on {publishdate}!")
         except Exception as e:
-            log("Something went wrong! Unable to verify that the video has been successfully published.")
+            log("Something went wrong! Unable to verify that the video has been successfully published. Not quitting!")
             log(e)
-            browser.quit()
             return None
 
         browser.quit()
