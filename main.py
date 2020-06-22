@@ -49,7 +49,7 @@ class Org:
         vpath = pathlib.Path(video)
         try:
             #videocreationdate = datetime.fromtimestamp(int(os.path.getmtime(video)))
-            videocreationdate = datetime.datetime.fromtimestamp(vpath.stat().st_ctime)
+            videocreationdate = datetime.fromtimestamp(vpath.stat().st_ctime)
             if name == "":
                 name = videocreationdate.strftime("%B %d, %Y")
         except Exception as e:
