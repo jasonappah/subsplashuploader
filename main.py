@@ -91,18 +91,21 @@ class Org:
             return False
 
         # Navigating to on-demand page
-        try:
-            WebDriverWait(browser, 60).until(EC.presence_of_element_located((By.XPATH, "//button[@data-ember-action-53='53']")))
-            browser.find_element_by_xpath("//button[@data-ember-action-53='53']").click()
-        except Exception as e:
-            log("Something went wrong! Unable to open the on-demand page. Maybe we weren't able to login?")
-            log(e)
-            browser.quit()
-            return False
+        #try:
+        #    WebDriverWait(browser, 60).until(EC.presence_of_element_located((By.XPATH, "//button[@data-ember-action-53='53']")))
+        #    browser.find_element_by_xpath("//button[@data-ember-action-53='53']").click()
+        #except Exception as e:
+        #    log("Something went wrong! Unable to open the on-demand page. Maybe we weren't able to login?")
+        #    log(e)
+        #    browser.quit()
+        #    return False
 
         try:
-            WebDriverWait(browser, 60).until(EC.presence_of_element_located((By.ID, "ember60")))
-            browser.find_element_by_id("ember60").click()
+            xpath = "//li[@data-callout-id='global-nav-media-on-demand']"
+	    #WebDriverWait(browser, 60).until(EC.presence_of_element_located((By.ID, "ember60")))
+            #browser.find_element_by_id("ember60").click()
+            WebDriverWait(browser, 60).until(EC.presence_of_element_located((By.XPATH, xpath)))
+            browser.find_element_by_xpath(xpath).click()
             log("Opened the on-demand page.")
         except Exception as e:
             log("Something went wrong! Unable to open the on-demand page. Maybe we weren't able to login?")
