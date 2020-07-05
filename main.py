@@ -213,7 +213,9 @@ class Org:
 
         # press the publish button
         try:
-            browser.find_element_by_xpath("//div/span/button").click()
+            y = "//div[(contains(text(), 'Publish') and not contains(text(), 'after'))]"
+            #browser.find_element_by_xpath("//div/span/button").click()
+            browser.find_element_by_xpath(y).click()
         except Exception as e:
             log("Something went wrong! Unable to press the publish button. Not quitting!")
             log(e)
@@ -241,4 +243,4 @@ class Org:
             self.upload(folderpath+"/"+i)
         
 if __name__ == "__main__":
-    print("Hi! This file only contains function definitions and doesn't do anything. Use org.example.py to get started!")
+    print("Hi! This file only contains function definitions and doesn't do anything. Edit org.example.py to get started!")
