@@ -91,14 +91,14 @@ class Org:
             return False
 
         # Navigating to on-demand page
-        #try:
-        #    WebDriverWait(browser, 60).until(EC.presence_of_element_located((By.XPATH, "//button[@data-ember-action-53='53']")))
-        #    browser.find_element_by_xpath("//button[@data-ember-action-53='53']").click()
-        #except Exception as e:
-        #    log("Something went wrong! Unable to open the on-demand page. Maybe we weren't able to login?")
-        #    log(e)
-        #    browser.quit()
-        #    return False
+        try:
+            WebDriverWait(browser, 60).until(EC.presence_of_element_located((By.XPATH, "//button[text()='Media']")))
+            browser.find_element_by_xpath("//button[@data-ember-action-53='53']").click()
+        except Exception as e:
+            log("Something went wrong! Unable to open the on-demand page. Maybe we weren't able to login?")
+            log(e)
+            browser.quit()
+            return False
 
         try:
             xpath = "//li[@data-callout-id='global-nav-media-on-demand']"
