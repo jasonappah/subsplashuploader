@@ -213,7 +213,7 @@ class Org:
 
         # press the publish button
         try:
-            y = "//div[(contains(text(), 'Publish') and not(contains(text(), 'after')))]"
+            y = "//div[(contains(string(), 'Publish') and not(contains(string(), 'after')))]"
             #browser.find_element_by_xpath("//div/span/button").click()
             browser.find_element_by_xpath(y).click()
         except Exception as e:
