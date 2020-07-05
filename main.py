@@ -92,7 +92,7 @@ class Org:
 
         # Navigating to on-demand page
         try:
-	    x = "//div[text()='Media']"
+            x = "//div[text()='Media']"
             WebDriverWait(browser, 60).until(EC.presence_of_element_located((By.XPATH, x)))
             browser.find_element_by_xpath(x).click()
         except Exception as e:
